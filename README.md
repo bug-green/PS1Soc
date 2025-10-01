@@ -1,2 +1,2 @@
-# PS1Soc
-My R code for Problem Set #1 in Soc 756 (Fall 2025)
+# Soc756EMG
+My R code for problem sets in Soc 756
