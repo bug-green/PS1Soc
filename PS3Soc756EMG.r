@@ -20,18 +20,23 @@ data3 <- data2[-c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16) ]
 
 View(data3)
 
-radix <- 85000
-
-data4 <- data3 %>% 
-  mutate(lx = radix*lag(cumprod(1-Total)))
-
-data4$lx[1] <- radix
+data4 <- data3 %>%
+  mutate(nqx_all = Total + crashprob)
 
 View(data4)
 
+radix <- 85000
+
 data5 <- data4 %>% 
-  mutate(ndx = Total*lx , ndx_i = lx*crashprob) 
+  mutate(lx = radix*lag(cumprod(1-nqx_all)))
+
+data4$lx[1] <- radix
 
 View(data5)
+
+data6 <- data5 %>% 
+  mutate(ndx_T = Total*lx , ndx_i = crashprob*lx) 
+
+View(data6)
 
 # completed calculations manually
